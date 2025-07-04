@@ -8,7 +8,7 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f8fafc;
-  color: #1e293b;
+  color: #1e293b; /* MEJORADO: Color de texto más oscuro para mejor contraste */
   line-height: 1.6;
 }
 
@@ -34,7 +34,7 @@ body {
   font-weight: bold;
   text-decoration: none;
   color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2); /* MEJORADO: Sombra de texto para mejor legibilidad */
 }
 
 .navbar-links {
@@ -44,19 +44,19 @@ body {
 
 .nav-link {
   text-decoration: none;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.9); /* MEJORADO: Mayor opacidad para mejor visibilidad */
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   transition: all 0.3s ease;
-  font-weight: 500;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  font-weight: 500; /* MEJORADO: Peso de fuente más fuerte */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* MEJORADO: Sombra de texto sutil */
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: white;
   background-color: rgba(255,255,255,0.2);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* MEJORADO: Sombra más fuerte en hover */
 }
 
 /* Main content */
@@ -76,15 +76,15 @@ body {
 
 .page-title {
   font-size: 2.5rem;
-  color: #0f172a;
+  color: #0f172a; /* MEJORADO: Color más oscuro para títulos principales */
   margin-bottom: 0.5rem;
-  font-weight: 700;
+  font-weight: 700; /* MEJORADO: Peso de fuente más fuerte */
 }
 
 .page-subtitle {
   font-size: 1.1rem;
-  color: #475569;
-  font-weight: 500;
+  color: #475569; /* MEJORADO: Color más oscuro para subtítulos */
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
 }
 
 /* Hero section */
@@ -100,16 +100,16 @@ body {
 .hero-title {
   font-size: 3rem;
   margin-bottom: 1rem;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  font-weight: 700; /* MEJORADO: Peso de fuente más fuerte */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* MEJORADO: Sombra de texto para mejor legibilidad */
 }
 
 .hero-subtitle {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  opacity: 0.95;
-  font-weight: 500;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  opacity: 0.95; /* MEJORADO: Mayor opacidad para mejor visibilidad */
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* MEJORADO: Sombra de texto sutil */
 }
 
 .hero-buttons {
@@ -128,32 +128,32 @@ body {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1rem; /* MEJORADO: Tamaño de fuente más claro */
 }
 
 .cta-button.primary {
-  background-color: #2563eb;
+  background-color: #2563eb; /* MEJORADO: Color azul más intenso */
   color: white;
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3); /* MEJORADO: Sombra para mejor definición */
 }
 
 .cta-button.primary:hover {
-  background-color: #1d4ed8;
+  background-color: #1d4ed8; /* MEJORADO: Color hover más intenso */
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.4); /* MEJORADO: Sombra hover mejorada */
 }
 
 .cta-button.secondary {
   background-color: transparent;
   color: white;
   border: 2px solid white;
-  font-weight: 600;
+  font-weight: 600; /* MEJORADO: Peso de fuente más fuerte */
 }
 
 .cta-button.secondary:hover {
   background-color: white;
   color: #667eea;
-  font-weight: 600;
+  font-weight: 600; /* MEJORADO: Mantener peso fuerte en hover */
 }
 
 .secondary-button {
@@ -161,21 +161,21 @@ body {
   border-radius: 0.5rem;
   text-decoration: none;
   font-weight: 600;
-  background-color: #4b5563;
+  background-color: #4b5563; /* MEJORADO: Color más oscuro para mejor contraste */
   color: white;
   transition: all 0.3s ease;
   display: inline-block;
 }
 
 .secondary-button:hover {
-  background-color: #374151;
+  background-color: #374151; /* MEJORADO: Color hover más oscuro */
 }
 
 .clear-filters-btn {
   padding: 0.75rem 2rem;
   border: none;
   border-radius: 0.5rem;
-  background-color: #2563eb;
+  background-color: #2563eb; /* MEJORADO: Color más intenso */
   color: white;
   font-weight: 600;
   cursor: pointer;
@@ -183,7 +183,7 @@ body {
 }
 
 .clear-filters-btn:hover {
-  background-color: #1d4ed8;
+  background-color: #1d4ed8; /* MEJORADO: Color hover más intenso */
 }
 
 /* Sections */
@@ -195,14 +195,14 @@ body {
 .section-title {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #0f172a;
-  font-weight: 700;
+  color: #0f172a; /* MEJORADO: Color más oscuro para títulos de sección */
+  font-weight: 700; /* MEJORADO: Peso de fuente más fuerte */
 }
 
 .section-subtitle {
-  color: #475569;
+  color: #475569; /* MEJORADO: Color más oscuro para subtítulos */
   margin-bottom: 2rem;
-  font-weight: 500;
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
 }
 
 .section-footer {
@@ -211,14 +211,14 @@ body {
 }
 
 .view-all-link {
-  color: #2563eb;
+  color: #2563eb; /* MEJORADO: Color azul más intenso */
   text-decoration: none;
   font-weight: 600;
 }
 
 .view-all-link:hover {
   text-decoration: underline;
-  color: #1d4ed8;
+  color: #1d4ed8; /* MEJORADO: Color hover más intenso */
 }
 
 /* Recipe grid */
@@ -285,8 +285,8 @@ body {
 .recipe-title {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: #0f172a;
-  font-weight: 600;
+  color: #0f172a; /* MEJORADO: Color más oscuro para títulos de recetas */
+  font-weight: 600; /* MEJORADO: Peso de fuente más fuerte */
 }
 
 .recipe-meta {
@@ -294,9 +294,9 @@ body {
   gap: 1rem;
   margin-bottom: 1rem;
   font-size: 0.9rem;
-  color: #475569;
+  color: #475569; /* MEJORADO: Color más oscuro para metadatos */
   flex-wrap: wrap;
-  font-weight: 500;
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
 }
 
 .recipe-time,
@@ -333,24 +333,24 @@ body {
 }
 
 .rating-number {
-  color: #475569;
+  color: #475569; /* MEJORADO: Color más oscuro para números de rating */
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
 }
 
 .recipe-link {
   display: inline-block;
-  color: #2563eb;
+  color: #2563eb; /* MEJORADO: Color azul más intenso */
   text-decoration: none;
   font-weight: 600;
   padding: 0.5rem 1rem;
-  border: 2px solid #2563eb;
+  border: 2px solid #2563eb; /* MEJORADO: Borde más intenso */
   border-radius: 0.5rem;
   transition: all 0.3s ease;
 }
 
 .recipe-link:hover {
-  background-color: #2563eb;
+  background-color: #2563eb; /* MEJORADO: Fondo hover más intenso */
   color: white;
 }
 
@@ -373,16 +373,16 @@ body {
   border: 2px solid #e2e8f0;
   border-radius: 0.5rem;
   font-size: 1rem;
-  color: #1e293b;
+  color: #1e293b; /* MEJORADO: Color de texto más oscuro en inputs */
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: #2563eb; /* MEJORADO: Color de foco más intenso */
 }
 
 .search-input::placeholder {
-  color: #64748b;
+  color: #64748b; /* MEJORADO: Color de placeholder más visible */
 }
 
 .filters-container {
@@ -398,13 +398,13 @@ body {
   background: white;
   flex: 1;
   min-width: 150px;
-  color: #1e293b;
-  font-weight: 500;
+  color: #1e293b; /* MEJORADO: Color de texto más oscuro en selects */
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
 }
 
 .filter-select:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: #2563eb; /* MEJORADO: Color de foco más intenso */
 }
 
 /* Results info */
@@ -413,9 +413,9 @@ body {
 }
 
 .results-count {
-  color: #475569;
+  color: #475569; /* MEJORADO: Color más oscuro para contadores */
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
 }
 
 .favorites-info {
@@ -425,8 +425,8 @@ body {
 
 .favorites-count {
   font-size: 1.1rem;
-  color: #0f172a;
-  font-weight: 600;
+  color: #0f172a; /* MEJORADO: Color más oscuro para contadores de favoritos */
+  font-weight: 600; /* MEJORADO: Peso de fuente más fuerte */
 }
 
 .favorites-actions {
@@ -457,13 +457,13 @@ body {
 .stat-number {
   font-size: 2rem;
   font-weight: bold;
-  color: #2563eb;
+  color: #2563eb; /* MEJORADO: Color más intenso para números de estadísticas */
 }
 
 .stat-label {
-  color: #475569;
+  color: #475569; /* MEJORADO: Color más oscuro para etiquetas */
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
 }
 
 /* Empty states */
@@ -479,15 +479,15 @@ body {
 .empty-favorites h3,
 .no-results h3 {
   margin-bottom: 1rem;
-  color: #0f172a;
-  font-weight: 600;
+  color: #0f172a; /* MEJORADO: Color más oscuro para títulos de estados vacíos */
+  font-weight: 600; /* MEJORADO: Peso de fuente más fuerte */
 }
 
 .empty-favorites p,
 .no-results p {
-  color: #475569;
+  color: #475569; /* MEJORADO: Color más oscuro para texto de estados vacíos */
   margin-bottom: 2rem;
-  font-weight: 500;
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
 }
 
 .empty-icon {
@@ -517,8 +517,8 @@ body {
 .form-section-title {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: #0f172a;
-  font-weight: 600;
+  color: #0f172a; /* MEJORADO: Color más oscuro para títulos de sección de formulario */
+  font-weight: 600; /* MEJORADO: Peso de fuente más fuerte */
 }
 
 .form-group {
@@ -529,7 +529,7 @@ body {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #1e293b; /* MEJORADO: Color más oscuro para etiquetas de formulario */
 }
 
 .form-input,
@@ -541,19 +541,19 @@ body {
   border-radius: 0.5rem;
   font-size: 1rem;
   font-family: inherit;
-  color: #1e293b;
+  color: #1e293b; /* MEJORADO: Color de texto más oscuro en campos de formulario */
 }
 
 .form-input:focus,
 .form-textarea:focus,
 .form-select:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: #2563eb; /* MEJORADO: Color de foco más intenso */
 }
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: #64748b;
+  color: #64748b; /* MEJORADO: Color de placeholder más visible */
 }
 
 .form-input.error,
@@ -566,7 +566,7 @@ body {
   font-size: 0.875rem;
   margin-top: 0.25rem;
   display: block;
-  font-weight: 500;
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado para mensajes de error */
 }
 
 .form-row {
@@ -589,23 +589,23 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: white;
+  color: white; /* MEJORADO: Color de texto blanco para mejor contraste en botones */
 }
 
 .form-button.primary {
-  background-color: #2563eb;
+  background-color: #2563eb; /* MEJORADO: Color más intenso */
 }
 
 .form-button.primary:hover:not(:disabled) {
-  background-color: #1d4ed8;
+  background-color: #1d4ed8; /* MEJORADO: Color hover más intenso */
 }
 
 .form-button.secondary {
-  background-color: #4b5563;
+  background-color: #4b5563; /* MEJORADO: Color más oscuro */
 }
 
 .form-button.secondary:hover:not(:disabled) {
-  background-color: #374151;
+  background-color: #374151; /* MEJORADO: Color hover más oscuro */
 }
 
 .form-button:disabled {
@@ -624,14 +624,14 @@ body {
 }
 
 .back-link {
-  color: #2563eb;
+  color: #2563eb; /* MEJORADO: Color más intenso */
   text-decoration: none;
   font-weight: 600;
 }
 
 .back-link:hover {
   text-decoration: underline;
-  color: #1d4ed8;
+  color: #1d4ed8; /* MEJORADO: Color hover más intenso */
 }
 
 .recipe-hero {
@@ -685,8 +685,8 @@ body {
 .recipe-title-large {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #0f172a;
-  font-weight: 700;
+  color: #0f172a; /* MEJORADO: Color más oscuro para título principal de receta */
+  font-weight: 700; /* MEJORADO: Peso de fuente más fuerte */
 }
 
 .recipe-meta-large {
@@ -703,14 +703,14 @@ body {
 
 .meta-label {
   font-size: 0.9rem;
-  color: #475569;
+  color: #475569; /* MEJORADO: Color más oscuro para etiquetas de metadatos */
   margin-bottom: 0.25rem;
-  font-weight: 500;
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
 }
 
 .meta-value {
   font-weight: 600;
-  color: #0f172a;
+  color: #0f172a; /* MEJORADO: Color más oscuro para valores de metadatos */
 }
 
 .meta-value.category-tag {
@@ -765,17 +765,17 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  color: #1e293b;
+  color: #1e293b; /* MEJORADO: Color de texto más oscuro para ingredientes y pasos */
 }
 
 .ingredient-bullet {
-  color: #2563eb;
+  color: #2563eb; /* MEJORADO: Color más intenso para bullets */
   font-weight: bold;
   font-size: 1.2rem;
 }
 
 .step-number {
-  background: #2563eb;
+  background: #2563eb; /* MEJORADO: Color más intenso para números de pasos */
   color: white;
   border-radius: 50%;
   width: 24px;
@@ -791,8 +791,8 @@ body {
 
 .step-text {
   flex: 1;
-  color: #1e293b;
-  font-weight: 500;
+  color: #1e293b; /* MEJORADO: Color de texto más oscuro para texto de pasos */
+  font-weight: 500; /* MEJORADO: Peso de fuente mejorado */
 }
 
 .recipe-actions {
@@ -812,23 +812,23 @@ body {
   display: inline-block;
   text-align: center;
   transition: all 0.3s ease;
-  color: white;
+  color: white; /* MEJORADO: Color de texto blanco para mejor contraste */
 }
 
 .action-button:not(.secondary) {
-  background-color: #2563eb;
+  background-color: #2563eb; /* MEJORADO: Color más intenso */
 }
 
 .action-button:not(.secondary):hover {
-  background-color: #1d4ed8;
+  background-color: #1d4ed8; /* MEJORADO: Color hover más intenso */
 }
 
 .action-button.secondary {
-  background-color: #4b5563;
+  background-color: #4b5563; /* MEJORADO: Color más oscuro */
 }
 
 .action-button.secondary:hover {
-  background-color: #374151;
+  background-color: #374151; /* MEJORADO: Color hover más oscuro */
 }
 
 .action-button.favorited {
