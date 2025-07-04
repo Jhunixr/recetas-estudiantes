@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecipes } from '../hooks/useRecipes';
 import RecipeCard from '../components/RecipeCard';
-import SearchBar from '../components/SearchBar';
+import SearchBar from '../components/SearchBar'; // AGREGADO: Componente de búsqueda
 
 const HomePage: React.FC = () => {
   const { recetas } = useRecipes();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(''); // AGREGADO: Estado para término de búsqueda
 
+  // AGREGADO: Filtrar recetas basado en el término de búsqueda
   const filteredRecetas = recetas.filter(receta =>
     receta.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
     receta.ingredientes.some(ingrediente =>
@@ -15,14 +16,17 @@ const HomePage: React.FC = () => {
     )
   );
 
+  // MODIFICADO: Usar recetas filtradas en lugar de todas las recetas
   const recetasDestacadas = filteredRecetas
     .sort((a, b) => b.valoracion - a.valoracion)
     .slice(0, 3);
 
+  // MODIFICADO: Usar recetas filtradas para recetas rápidas
   const recetasRapidas = filteredRecetas
     .filter(receta => receta.tiempo <= 20)
     .slice(0, 3);
 
+  // AGREGADO: Función para manejar búsqueda
   const handleSearch = (term: string) => {
     setSearchTerm(term);
   };
@@ -46,11 +50,13 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* AGREGADO: Barra de búsqueda en la página principal */}
       <SearchBar 
         onSearch={handleSearch}
         placeholder="🔍 Buscar recetas por nombre o ingredientes..."
       />
 
+      {/* AGREGADO: Mostrar información de búsqueda cuando hay término de búsqueda */}
       {searchTerm && (
         <div style={{ 
           textAlign: 'center', 
@@ -66,6 +72,7 @@ const HomePage: React.FC = () => {
 
       <section className="featured-section">
         <h2 className="section-title">⭐ Recetas Más Valoradas</h2>
+        {/* AGREGADO: Mostrar mensaje cuando no hay resultados de búsqueda */}
         {recetasDestacadas.length === 0 ? (
           <p style={{ textAlign: 'center', color: '#64748b' }}>
             No se encontraron recetas destacadas con tu búsqueda
@@ -87,6 +94,7 @@ const HomePage: React.FC = () => {
       <section className="quick-section">
         <h2 className="section-title">⚡ Recetas Rápidas</h2>
         <p className="section-subtitle">Perfectas para cuando tienes poco tiempo</p>
+        {/* AGREGADO: Mostrar mensaje cuando no hay recetas rápidas en búsqueda */}
         {recetasRapidas.length === 0 ? (
           <p style={{ textAlign: 'center', color: '#64748b' }}>
             No se encontraron recetas rápidas con tu búsqueda
@@ -103,6 +111,7 @@ const HomePage: React.FC = () => {
       <section className="stats-section">
         <div className="stats-container">
           <div className="stat-item">
+            {/* MODIFICADO: Mostrar estadísticas basadas en recetas filtradas */}
             <span className="stat-number">{filteredRecetas.length}</span>
             <span className="stat-label">
               {searchTerm ? 'Resultados' : 'Recetas'}
@@ -110,6 +119,7 @@ const HomePage: React.FC = () => {
           </div>
           <div className="stat-item">
             <span className="stat-number">
+              {/* MODIFICADO: Calcular promedio solo si hay recetas filtradas */}
               {filteredRecetas.length > 0 
                 ? Math.round(filteredRecetas.reduce((acc, r) => acc + r.tiempo, 0) / filteredRecetas.length)
                 : 0
@@ -118,6 +128,7 @@ const HomePage: React.FC = () => {
             <span className="stat-label">Min Promedio</span>
           </div>
           <div className="stat-item">
+            {/* MODIFICADO: Contar recetas fáciles en resultados filtrados */}
             <span className="stat-number">
               {filteredRecetas.filter(r => r.dificultad === 'fácil').length}
             </span>

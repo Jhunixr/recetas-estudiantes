@@ -1,3 +1,4 @@
+// AGREGADO: Nueva página completa de estadísticas
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useRecipes } from '../hooks/useRecipes';
@@ -7,26 +8,31 @@ const StatsPage: React.FC = () => {
 
   const totalRecetas = recetas.length;
   
+  // AGREGADO: Calcular estadísticas por categoría
   const recetasPorCategoria = recetas.reduce((contador, receta) => {
     contador[receta.categoria] = (contador[receta.categoria] || 0) + 1;
     return contador;
   }, {} as Record<string, number>);
 
+  // AGREGADO: Calcular estadísticas por dificultad
   const recetasPorDificultad = recetas.reduce((contador, receta) => {
     contador[receta.dificultad] = (contador[receta.dificultad] || 0) + 1;
     return contador;
   }, {} as Record<string, number>);
 
+  // AGREGADO: Encontrar la receta más popular (mejor valorada)
   const recetaMasPopular = recetas.reduce((mejor, receta) => 
     receta.valoracion > mejor.valoracion ? receta : mejor
   );
 
+  // AGREGADO: Calcular tiempo promedio de preparación
   const tiempoPromedio = Math.round(
     recetas.reduce((suma, receta) => suma + receta.tiempo, 0) / totalRecetas
   );
 
   const totalFavoritos = favoritos.length;
 
+  // AGREGADO: Función helper para emojis de dificultad
   const getDificultadEmoji = (dificultad: string) => {
     if (dificultad === 'fácil') return '🟢';
     if (dificultad === 'medio') return '🟡';
@@ -43,6 +49,7 @@ const StatsPage: React.FC = () => {
         </p>
       </div>
 
+      {/* AGREGADO: Sección de resumen general */}
       <div className="stats-section">
         <h2 className="section-title">📈 Resumen General</h2>
         <div className="stats-container">
@@ -65,6 +72,7 @@ const StatsPage: React.FC = () => {
         </div>
       </div>
 
+      {/* AGREGADO: Sección de receta más popular */}
       <div className="stats-section">
         <h2 className="section-title">🏆 Receta Más Popular</h2>
         <div style={{ 
@@ -98,6 +106,7 @@ const StatsPage: React.FC = () => {
         </div>
       </div>
 
+      {/* AGREGADO: Sección de estadísticas por categoría */}
       <div className="stats-section">
         <h2 className="section-title">🏷️ Recetas por Categoría</h2>
         <div style={{ 
@@ -127,6 +136,7 @@ const StatsPage: React.FC = () => {
         </div>
       </div>
 
+      {/* AGREGADO: Sección de estadísticas por dificultad */}
       <div className="stats-section">
         <h2 className="section-title">🎯 Recetas por Dificultad</h2>
         <div style={{ 
@@ -159,6 +169,7 @@ const StatsPage: React.FC = () => {
         </div>
       </div>
 
+      {/* AGREGADO: Botones de navegación al final */}
       <div style={{ textAlign: 'center', marginTop: '3rem' }}>
         <Link to="/recetas" className="cta-button primary" style={{ marginRight: '1rem' }}>
           Ver Recetas

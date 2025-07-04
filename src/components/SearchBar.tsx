@@ -1,3 +1,4 @@
+// AGREGADO: Nuevo componente SearchBar para funcionalidad de búsqueda
 import React, { useState } from 'react';
 
 interface SearchBarProps {
@@ -11,17 +12,20 @@ const SearchBar: React.FC<SearchBarProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
+  // AGREGADO: Manejar envío del formulario de búsqueda
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSearch(searchTerm);
   };
 
+  // AGREGADO: Búsqueda en tiempo real mientras el usuario escribe
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-    onSearch(value);
+    onSearch(value); // Búsqueda instantánea
   };
 
+  // AGREGADO: Función para limpiar la búsqueda
   const handleClear = () => {
     setSearchTerm('');
     onSearch('');
@@ -54,6 +58,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 outline: 'none'
               }}
             />
+            {/* AGREGADO: Botón para limpiar búsqueda cuando hay texto */}
             {searchTerm && (
               <button
                 type="button"

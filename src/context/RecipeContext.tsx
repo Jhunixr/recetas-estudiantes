@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import type { Recipe } from '../types/Recipe';
 import recetasData from '../data/recetas.json';
-import FavoritesService from '../services/favoritesService';
+import FavoritesService from '../services/favoritesService'; // AGREGADO: Servicio para manejar favoritos
 
 interface RecipeContextType {
   recetas: Recipe[];
@@ -24,11 +24,13 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children }) => {
   const [recetas, setRecetas] = useState<Recipe[]>(recetasData.recetas as Recipe[]);
   const [favoritos, setFavoritos] = useState<number[]>([]);
 
+  // MODIFICADO: Usar servicio para cargar favoritos del localStorage
   useEffect(() => {
     const favoritosGuardados = FavoritesService.getFavorites();
     setFavoritos(favoritosGuardados);
   }, []);
 
+  // MODIFICADO: Usar servicio para agregar favoritos con manejo de errores
   const addToFavoritos = (id: number) => {
     const success = FavoritesService.addFavorite(id);
     if (success) {
@@ -36,6 +38,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children }) => {
     }
   };
 
+  // MODIFICADO: Usar servicio para quitar favoritos con manejo de errores
   const removeFromFavoritos = (id: number) => {
     const success = FavoritesService.removeFavorite(id);
     if (success) {

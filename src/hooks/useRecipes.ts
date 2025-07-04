@@ -8,6 +8,7 @@ export const useRecipes = () => {
     throw new Error('useRecipes debe ser usado dentro de un RecipeProvider');
   }
 
+  // AGREGADO: Función para filtrar recetas por dificultad
   const filterByDifficulty = (difficulty: string): Recipe[] => {
     if (!difficulty || difficulty === '') {
       return context.recetas;
@@ -20,6 +21,6 @@ export const useRecipes = () => {
 
   return {
     ...context,
-    filterByDifficulty
+    filterByDifficulty // AGREGADO: Exportar nueva función de filtrado
   };
 };
