@@ -6,6 +6,7 @@ import RecipesPage from './pages/RecipesPage';
 import FavoritesPage from './pages/FavoritesPage';
 import CreateRecipePage from './pages/CreateRecipePage';
 import RecipeDetailPage from './pages/RecipeDetailPage';
+import StatsPage from './pages/StatsPage';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
               <Route path="/recetas" element={<RecipesPage />} />
               <Route path="/favoritas" element={<FavoritesPage />} />
               <Route path="/crear" element={<CreateRecipePage />} />
+              <Route path="/estadisticas" element={<StatsPage />} />
               <Route path="/receta/:id" element={<RecipeDetailPage />} />
             </Routes>
           </main>

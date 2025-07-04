@@ -28,6 +28,9 @@ const Navbar: React.FC = () => {
         <Link to="/favoritas" className={isActive('/favoritas')}>
           ❤️ Favoritas ({favoritos.length})
         </Link>
+        <Link to="/estadisticas" className={isActive('/estadisticas')}>
+          📊 Estadísticas
+        </Link>
         <Link to="/crear" className={isActive('/crear')}>
           ➕ Crear Receta
         </Link>

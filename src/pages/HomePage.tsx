@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecipes } from '../hooks/useRecipes';
 import RecipeCard from '../components/RecipeCard';
+import SearchBar from '../components/SearchBar';
 
 const HomePage: React.FC = () => {
   const { recetas } = useRecipes();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Filtrar recetas basado en la búsqueda
+  const filteredRecetas = recetas.filter(receta =>
+    receta.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    receta.ingredientes.some(ingrediente =>
+      ingrediente.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
 
   // Obtener las recetas más valoradas (top 3)
-  const recetasDestacadas = recetas
+  const recetasDestacadas = filteredRecetas
     .sort((a, b) => b.valoracion - a.valoracion)
     .slice(0, 3);
 
   // Obtener recetas rápidas (menos de 20 minutos)
-  const recetasRapidas = recetas
+  const recetasRapidas = filteredRecetas
     .filter(receta => receta.tiempo <= 20)
     .slice(0, 3);
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+  };
 
   return (
     <div className="home-page">
@@ -35,13 +49,40 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Barra de búsqueda */}
+      <SearchBar 
+        onSearch={handleSearch}
+        placeholder="🔍 Buscar recetas por nombre o ingredientes..."
+      />
+
+      {searchTerm && (
+        <div className="search-results-info">
+          <p style={{ 
+            textAlign: 'center', 
+            color: '#64748b',
+            marginBottom: '2rem'
+          }}>
+            {filteredRecetas.length === 0 
+              ? `No se encontraron recetas para "${searchTerm}"`
+              : `Mostrando ${filteredRecetas.length} resultado${filteredRecetas.length !== 1 ? 's' : ''} para "${searchTerm}"`
+            }
+          </p>
+        </div>
+      )}
+
       <section className="featured-section">
         <h2 className="section-title">⭐ Recetas Más Valoradas</h2>
-        <div className="recipes-grid">
-          {recetasDestacadas.map(receta => (
-            <RecipeCard key={receta.id} recipe={receta} />
-          ))}
-        </div>
+        {recetasDestacadas.length === 0 ? (
+          <p style={{ textAlign: 'center', color: '#64748b' }}>
+            No se encontraron recetas destacadas con tu búsqueda
+          </p>
+        ) : (
+          <div className="recipes-grid">
+            {recetasDestacadas.map(receta => (
+              <RecipeCard key={receta.id} recipe={receta} />
+            ))}
+          </div>
+        )}
         <div className="section-footer">
           <Link to="/recetas" className="view-all-link">
             Ver todas las recetas →
@@ -52,28 +93,39 @@ const HomePage: React.FC = () => {
       <section className="quick-section">
         <h2 className="section-title">⚡ Recetas Rápidas</h2>
         <p className="section-subtitle">Perfectas para cuando tienes poco tiempo</p>
-        <div className="recipes-grid">
-          {recetasRapidas.map(receta => (
-            <RecipeCard key={receta.id} recipe={receta} />
-          ))}
-        </div>
+        {recetasRapidas.length === 0 ? (
+          <p style={{ textAlign: 'center', color: '#64748b' }}>
+            No se encontraron recetas rápidas con tu búsqueda
+          </p>
+        ) : (
+          <div className="recipes-grid">
+            {recetasRapidas.map(receta => (
+              <RecipeCard key={receta.id} recipe={receta} />
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="stats-section">
         <div className="stats-container">
           <div className="stat-item">
-            <span className="stat-number">{recetas.length}</span>
-            <span className="stat-label">Recetas</span>
+            <span className="stat-number">{filteredRecetas.length}</span>
+            <span className="stat-label">
+              {searchTerm ? 'Resultados' : 'Recetas'}
+            </span>
           </div>
           <div className="stat-item">
             <span className="stat-number">
-              {Math.round(recetas.reduce((acc, r) => acc + r.tiempo, 0) / recetas.length)}
+              {filteredRecetas.length > 0 
+                ? Math.round(filteredRecetas.reduce((acc, r) => acc + r.tiempo, 0) / filteredRecetas.length)
+                : 0
+              }
             </span>
             <span className="stat-label">Min Promedio</span>
           </div>
           <div className="stat-item">
             <span className="stat-number">
-              {recetas.filter(r => r.dificultad === 'fácil').length}
+              {filteredRecetas.filter(r => r.dificultad === 'fácil').length}
             </span>
             <span className="stat-label">Recetas Fáciles</span>
           </div>
