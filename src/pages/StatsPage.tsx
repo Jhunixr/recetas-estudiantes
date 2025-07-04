@@ -2,44 +2,48 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useRecipes } from '../hooks/useRecipes';
 
+// Ejercicio 3: Página de estadísticas
+// Esto se ve complicado pero voy a intentarlo
+
 const StatsPage: React.FC = () => {
   const { recetas, favoritos } = useRecipes();
 
-  // Calcular estadísticas
+  // Calcular el total de recetas (esto es fácil)
   const totalRecetas = recetas.length;
   
-  // Recetas por categoría
-  const recetasPorCategoria = recetas.reduce((acc, receta) => {
-    acc[receta.categoria] = (acc[receta.categoria] || 0) + 1;
-    return acc;
+  // Contar recetas por categoría
+  // Esto me costó entender, pero creo que reduce() cuenta las cosas
+  const recetasPorCategoria = recetas.reduce((contador, receta) => {
+    // Si la categoría ya existe, sumar 1, si no, empezar en 1
+    contador[receta.categoria] = (contador[receta.categoria] || 0) + 1;
+    return contador;
+  }, {} as Record<string, number>); // No entiendo muy bien este tipo, pero funciona
+
+  // Contar recetas por dificultad (igual que arriba)
+  const recetasPorDificultad = recetas.reduce((contador, receta) => {
+    contador[receta.dificultad] = (contador[receta.dificultad] || 0) + 1;
+    return contador;
   }, {} as Record<string, number>);
 
-  // Recetas por dificultad
-  const recetasPorDificultad = recetas.reduce((acc, receta) => {
-    acc[receta.dificultad] = (acc[receta.dificultad] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
-
-  // Receta más popular (mayor valoración)
-  const recetaMasPopular = recetas.reduce((max, receta) => 
-    receta.valoracion > max.valoracion ? receta : max
+  // Encontrar la receta más popular (la que tiene mayor valoración)
+  const recetaMasPopular = recetas.reduce((mejor, receta) => 
+    receta.valoracion > mejor.valoracion ? receta : mejor
   );
 
-  // Tiempo promedio de preparación
+  // Calcular tiempo promedio
   const tiempoPromedio = Math.round(
-    recetas.reduce((sum, receta) => sum + receta.tiempo, 0) / totalRecetas
+    recetas.reduce((suma, receta) => suma + receta.tiempo, 0) / totalRecetas
   );
 
   // Total de favoritos
   const totalFavoritos = favoritos.length;
 
+  // Función para mostrar emojis según dificultad
   const getDificultadEmoji = (dificultad: string) => {
-    switch (dificultad) {
-      case 'fácil': return '🟢';
-      case 'medio': return '🟡';
-      case 'difícil': return '🔴';
-      default: return '⚪';
-    }
+    if (dificultad === 'fácil') return '🟢';
+    if (dificultad === 'medio') return '🟡';
+    if (dificultad === 'difícil') return '🔴';
+    return '⚪';
   };
 
   return (
@@ -47,11 +51,11 @@ const StatsPage: React.FC = () => {
       <div className="page-header">
         <h1 className="page-title">📊 Estadísticas de Recetas</h1>
         <p className="page-subtitle">
-          Descubre datos interesantes sobre nuestra colección de recetas
+          Datos interesantes sobre nuestras recetas
         </p>
       </div>
 
-      {/* Estadísticas generales */}
+      {/* Estadísticas principales */}
       <div className="stats-section">
         <h2 className="section-title">📈 Resumen General</h2>
         <div className="stats-container">
@@ -116,6 +120,7 @@ const StatsPage: React.FC = () => {
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           gap: '1rem'
         }}>
+          {/* Object.entries() convierte el objeto en array para poder usar map() */}
           {Object.entries(recetasPorCategoria).map(([categoria, cantidad]) => (
             <div 
               key={categoria}
@@ -171,13 +176,13 @@ const StatsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Acciones */}
+      {/* Botones para navegar */}
       <div style={{ textAlign: 'center', marginTop: '3rem' }}>
         <Link to="/recetas" className="cta-button primary" style={{ marginRight: '1rem' }}>
-          Explorar Recetas
+          Ver Recetas
         </Link>
         <Link to="/crear" className="cta-button secondary">
-          Crear Nueva Receta
+          Crear Receta
         </Link>
       </div>
     </div>

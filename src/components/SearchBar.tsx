@@ -1,36 +1,43 @@
 import React, { useState } from 'react';
 
+// Ejercicio 2: Componente SearchBar
+// Espero que esto esté bien, copié un poco el estilo de otros componentes
+
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
-  placeholder?: string;
+  placeholder?: string; // El ? significa que es opcional, ¿verdad?
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ 
   onSearch, 
   placeholder = "Buscar recetas..." 
 }) => {
+  // Estado local para el input
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Función para cuando se envía el formulario
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); // Esto evita que se recargue la página
     onSearch(searchTerm);
   };
 
+  // Función para cuando cambia el texto del input
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-    // Búsqueda en tiempo real
+    // Búsqueda mientras escribes (como Google)
     onSearch(value);
   };
 
+  // Función para limpiar la búsqueda
   const handleClear = () => {
     setSearchTerm('');
     onSearch('');
   };
 
   return (
-    <div className="search-bar-container" style={{ marginBottom: '2rem' }}>
-      <form onSubmit={handleSubmit} className="search-form">
+    <div style={{ marginBottom: '2rem' }}>
+      <form onSubmit={handleSubmit}>
         <div style={{ 
           display: 'flex', 
           gap: '0.5rem', 
@@ -54,9 +61,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 fontSize: '1rem',
                 outline: 'none'
               }}
-              onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
-              onBlur={(e) => e.target.style.borderColor = '#e2e8f0'}
             />
+            {/* Botón X para limpiar, solo aparece si hay texto */}
             {searchTerm && (
               <button
                 type="button"
@@ -86,11 +92,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
               border: 'none',
               borderRadius: '0.5rem',
               cursor: 'pointer',
-              fontWeight: '600',
-              transition: 'background-color 0.3s ease'
+              fontWeight: '600'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
           >
             🔍 Buscar
           </button>

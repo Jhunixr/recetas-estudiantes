@@ -8,11 +8,16 @@ export const useRecipes = () => {
     throw new Error('useRecipes debe ser usado dentro de un RecipeProvider');
   }
 
-  // Función para filtrar recetas por dificultad
+  // Ejercicio 1: Función para filtrar por dificultad
+  // No estoy muy seguro si esto está bien, pero creo que así funciona
   const filterByDifficulty = (difficulty: string): Recipe[] => {
-    if (!difficulty) {
+    // Si no hay dificultad seleccionada, devolver todas las recetas
+    if (!difficulty || difficulty === '') {
       return context.recetas;
     }
+    
+    // Filtrar las recetas que coincidan con la dificultad
+    // Uso toLowerCase() para que no importe si escriben "Fácil" o "fácil"
     return context.recetas.filter(receta => 
       receta.dificultad.toLowerCase() === difficulty.toLowerCase()
     );
@@ -20,6 +25,6 @@ export const useRecipes = () => {
 
   return {
     ...context,
-    filterByDifficulty
+    filterByDifficulty // Devolver la función para que se pueda usar
   };
 };

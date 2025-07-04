@@ -24,22 +24,27 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children }) => {
   const [recetas, setRecetas] = useState<Recipe[]>(recetasData.recetas as Recipe[]);
   const [favoritos, setFavoritos] = useState<number[]>([]);
 
-  // useEffect para cargar favoritos del localStorage usando el servicio
+  // useEffect para cargar favoritos cuando se inicia la app
   useEffect(() => {
+    // Usar el servicio para obtener favoritos guardados
     const favoritosGuardados = FavoritesService.getFavorites();
     setFavoritos(favoritosGuardados);
   }, []);
 
   const addToFavoritos = (id: number) => {
+    // Usar el servicio para agregar
     const success = FavoritesService.addFavorite(id);
     if (success) {
+      // Si se guardó bien, actualizar el estado
       setFavoritos(prev => [...prev, id]);
     }
   };
 
   const removeFromFavoritos = (id: number) => {
+    // Usar el servicio para quitar
     const success = FavoritesService.removeFavorite(id);
     if (success) {
+      // Si se quitó bien, actualizar el estado
       setFavoritos(prev => prev.filter(favId => favId !== id));
     }
   };
