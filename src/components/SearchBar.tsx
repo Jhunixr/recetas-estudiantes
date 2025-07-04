@@ -1,35 +1,27 @@
 import React, { useState } from 'react';
 
-// Ejercicio 2: Componente SearchBar
-// Espero que esto esté bien, copié un poco el estilo de otros componentes
-
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
-  placeholder?: string; // El ? significa que es opcional, ¿verdad?
+  placeholder?: string;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ 
   onSearch, 
   placeholder = "Buscar recetas..." 
 }) => {
-  // Estado local para el input
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Función para cuando se envía el formulario
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Esto evita que se recargue la página
+    e.preventDefault();
     onSearch(searchTerm);
   };
 
-  // Función para cuando cambia el texto del input
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-    // Búsqueda mientras escribes (como Google)
     onSearch(value);
   };
 
-  // Función para limpiar la búsqueda
   const handleClear = () => {
     setSearchTerm('');
     onSearch('');
@@ -62,7 +54,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 outline: 'none'
               }}
             />
-            {/* Botón X para limpiar, solo aparece si hay texto */}
             {searchTerm && (
               <button
                 type="button"

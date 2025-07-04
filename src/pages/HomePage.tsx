@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecipes } from '../hooks/useRecipes';
 import RecipeCard from '../components/RecipeCard';
-import SearchBar from '../components/SearchBar'; // Importar el nuevo componente
+import SearchBar from '../components/SearchBar';
 
 const HomePage: React.FC = () => {
   const { recetas } = useRecipes();
-  const [searchTerm, setSearchTerm] = useState(''); // Estado para la búsqueda
+  const [searchTerm, setSearchTerm] = useState('');
 
-  // Filtrar recetas basado en la búsqueda
   const filteredRecetas = recetas.filter(receta =>
     receta.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
     receta.ingredientes.some(ingrediente =>
@@ -16,17 +15,14 @@ const HomePage: React.FC = () => {
     )
   );
 
-  // Obtener las recetas más valoradas (top 3) de las filtradas
   const recetasDestacadas = filteredRecetas
     .sort((a, b) => b.valoracion - a.valoracion)
     .slice(0, 3);
 
-  // Obtener recetas rápidas (menos de 20 minutos) de las filtradas
   const recetasRapidas = filteredRecetas
     .filter(receta => receta.tiempo <= 20)
     .slice(0, 3);
 
-  // Función para manejar la búsqueda
   const handleSearch = (term: string) => {
     setSearchTerm(term);
   };
@@ -50,13 +46,11 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Usar el componente SearchBar */}
       <SearchBar 
         onSearch={handleSearch}
         placeholder="🔍 Buscar recetas por nombre o ingredientes..."
       />
 
-      {/* Mostrar información de búsqueda si hay término de búsqueda */}
       {searchTerm && (
         <div style={{ 
           textAlign: 'center', 
